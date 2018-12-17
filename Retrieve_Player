@@ -1,0 +1,4069 @@
+{
+	"info": {
+		"_postman_id": "35311327-b55f-4dd5-9427-472ccb392ae0",
+		"name": "Retrieve_Player",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Retrieve Player ",
+			"item": [
+				{
+					"name": "Login with valid email and valid pw",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"    pm.environment.set(\"session_token\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"sha@codewalla.com\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid company_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "company_na"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid department_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "department_na"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid group_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_na1&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "group_na1"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid first_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "first_na"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid last_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_na"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if sorting key is invalid location_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct sorting key.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100084;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_na"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if order by invalid value ASC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct order by value[ASC/DESC].\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100085;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=asc1&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "asc1"
+								},
+								{
+									"key": "order",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check error if order by invalid value DESC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter correct order by value[ASC/DESC].\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100085;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC1&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC1"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "to check error if start value is invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter valid start_index value.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100086;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=-1&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "-1"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "to check error if limit value is invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Please enter valid limit value.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===100087;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=-20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "-20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "to check error if commapany id is invalid",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Company Id is not valid.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===305000;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=3445453354354&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "3445453354354"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - company_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    //tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "company_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - department_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19;",
+									"   ",
+									"    tests[\"To check ASC Department first position\"]=body.data.player_list[0].department_name===\"Animation\";",
+									"    ",
+									"    tests[\"To check ASC Department last position\"]=body.data.player_list[18].department_name===\"Zoom\";",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "department_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - group_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19;",
+									"   ",
+									"    tests[\"To check ASC Group_Name first position\"]=body.data.player_list[0].group_id===0;",
+									"    ",
+									"   ",
+									"    tests[\"To check ASC Group_Name Last position\"]=body.data.player_list[18].group_name===\"Z Group3\";",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "group_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - first_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check ASC first position\"]=body.data.player_list[0].first_name===\"Ahmed\";",
+									"    tests[\"To check ASC last position\"]=body.data.player_list[18].first_name===\"zmail\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "first_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - last_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check ASC first position(Last_Name)\"]=body.data.player_list[0].last_name===\"Aguero\";",
+									"    tests[\"To check ASC last position(Last_Name)\"]=body.data.player_list[18].last_name===\"ZEkramy\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - location_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check ASC first position(Location_Name)\"]=body.data.player_list[0].location_name===\"India\";",
+									"    tests[\"To check ASC last position(Location_Name)\"]=body.data.player_list[18].location_name===\"Retrieve P location\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - company_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    //tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "company_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - department_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19;",
+									"   ",
+									"    tests[\"To check DESC Department first position\"]=body.data.player_list[0].department_name===\"Zoom\";",
+									"    ",
+									"    tests[\"To check DESC Department last position\"]=body.data.player_list[18].department_name===\"Animation\";",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "department_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - location_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check DESC first position(Location_Name)\"]=body.data.player_list[0].location_name===\"Retrieve P location\";",
+									"    tests[\"To check DESC last position(Location_Name)\"]=body.data.player_list[18].location_name===\"India\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - group_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19;",
+									"    tests[\"To check DESC Group_Name Last position\"]=body.data.player_list[0].group_name===\"Z Group3\";",
+									"    tests[\"To check DESC Group_Name first position\"]=body.data.player_list[18].group_id===0;",
+									"    ",
+									"   ",
+									"   ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "group_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - first_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check DESC first position\"]=body.data.player_list[0].first_name===\"zmail\";",
+									"    tests[\"To check DESC last position\"]=body.data.player_list[18].first_name===\"Ahmed\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "first_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - last_name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check DESC first position(Last_Name)\"]=body.data.player_list[0].last_name===\"ZEkramy\";",
+									"    tests[\"To check DESC last position(Last_Name)\"]=body.data.player_list[18].last_name===\"Aguero\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC- Email ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check email ASC first position(First Email ID)\"]=body.data.player_list[0].email===\"shailendra.s+1004@codewalla.com\";",
+									"    tests[\"To check ASC last position(Last Email ID)\"]=body.data.player_list[18].email===\"zm@gmail.com\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC- Email ID Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===19",
+									"    tests[\"To check DESC for email(first email id position)\"]=body.data.player_list[0].email===\"zm@gmail.com\";",
+									"    tests[\"To check DESC for email(Last email id position)\"]=body.data.player_list[18].email===\"shailendra.s+1004@codewalla.com\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check success for inactive player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===3;",
+									"    tests[\"to check success inactive player first position for status\"]=body.data.player_list[0].state===\"inactive\";",
+									"    tests[\"to check success inactive player last position for status\"]=body.data.player_list[2].state===\"inactive\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "inactive"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - Inactive Player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===3;",
+									"    tests[\"To check ASC first position(inactive player)\"]=body.data.player_list[0].state===\"inactive\";",
+									"    tests[\"To check ASC last position(inactive player)\"]=body.data.player_list[2].state===\"inactive\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=inactive",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "first_name"
+								},
+								{
+									"key": "order",
+									"value": "ASC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "inactive"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check DESC - Inactive Player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===3;",
+									"    tests[\"To check DESC first position(Inactive player)\"]=body.data.player_list[0].state===\"inactive\";",
+									"    tests[\"To check DESC last position(Inactive player)\"]=body.data.player_list[2].state===\"inactive\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "first_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "inactive"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "Login with valid email and valid pw- Manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    //tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"    pm.environment.set(\"session_token_manager\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"manager@1huddle.co\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "to check error Unauthorized access.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"You don't have permission to other companies players.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301002;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token_manager}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "Login with valid email and valid pw- Middle manager (Unauthorized )",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    //tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"    pm.environment.set(\"session_token_Middlemanager\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"shailendra.s+101@codewalla.com\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "to check error Unauthorized access using middle manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === false;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"You don't have permission to other companies players.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301002;",
+									"    tests[\"To check data\"]=body.data===null;",
+									"    ",
+									"   ",
+									"    ",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token_Middlemanager}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "Login with valid email and valid pw- Middle manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    //tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"    pm.environment.set(\"session_token_Middlemanager\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"shailendra.s+1404@codewalla.com\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "to check success message login middle manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7c46be8b-b896-47ae-b41f-eb1cf1cbb2b4",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is false\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check data\"]=body.data.total_player===19;",
+									"   ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token_Middlemanager}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
+							"protocol": "http",
+							"host": [
+								"newdev-api",
+								"1huddle",
+								"co"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "location_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
