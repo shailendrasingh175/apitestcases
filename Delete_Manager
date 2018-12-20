@@ -1,0 +1,525 @@
+{
+	"info": {
+		"_postman_id": "5c868ff2-87c7-4b29-968b-5529c3529c83",
+		"name": "Delete_Manager Test Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete Manager",
+			"item": [
+				{
+					"name": "Login with valid email and valid pw (Super Admin)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"    pm.environment.set(\"session_token\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"sha@codewalla.com\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.5/auth/login",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "add_manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bbcdd0ea-4af0-413b-a17e-73a503997b0b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"    //tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
+									"    ",
+									"     pm.environment.set(\"manager_id\",body.data.manager_id);",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "1774c0ef-7b0b-4fe1-b042-13334cc01514",
+								"exec": [
+									"var randomNumber =  Math.floor(Math.random() * 100);",
+									"var randomEmail = \"shailendra.s+\"+randomNumber+\"@codewalla.com\";",
+									"postman.setEnvironmentVariable(\"email\", randomEmail);",
+									"var randomusername = \"shailendra\"+randomNumber;",
+									"postman.setEnvironmentVariable(\"randomusername\", randomusername);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session-token",
+								"value": "{{session_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"company_id\":848,\r\n\"first_name\":\"shailendra\",\r\n\"last_name\":\"Manager\",\r\n\"location_id\":1111,\r\n\"department_id\":246,\r\n\"user_name\":\"{{randomusername}}\",\r\n\"email\":\"{{email}}\",\r\n\"password\":\"pass\",\r\n\"title\":\"optional\",\r\n\"gender\":\"M\",\r\n\"date_of_birth\":\"2011-11-11\",\r\n\"college\":\"Pune\",\r\n\"college_graduation_year\":\"2011\",\r\n\"college_major\":\"Science\",\r\n\"highest_degree_id\":1,\r\n\"employee_id\":11,\r\n\"state_id\":1,\r\n\"country_id\":1,\r\n\"city\":1,\r\n\"eth_id\":5,\r\n\"type\": \"M\"\r\n}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/add_manager",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"add_manager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b69d695-ed59-42c9-bd3a-924d8bd59bde",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"     tests[\"To check message is correct\"]=body.message===\"Manager deleted successfully.\";",
+									"    tests[\"To check message code\"]=body.message_code===301020;",
+									"    ",
+									"    ",
+									"    ",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"manager_ids\":[{{manager_id}}]\r\n}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/delete",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "For check error invalid id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b69d695-ed59-42c9-bd3a-924d8bd59bde",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === false;",
+									"     tests[\"To check message is correct\"]=body.message===\"Player ids list should not be empty.\";",
+									"    tests[\"To check message code\"]=body.message_code===301018;",
+									"    ",
+									"    ",
+									"    ",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"manager_ids\":[]\r\n}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/delete",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "For check error for blank manager ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b69d695-ed59-42c9-bd3a-924d8bd59bde",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === false;",
+									"     tests[\"To check message is correct\"]=body.message===\"Player ids list should not be empty.\";",
+									"    tests[\"To check message code\"]=body.message_code===301018;",
+									"    ",
+									"    ",
+									"    ",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"manager_ids\":[]\r\n}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/delete",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "To verify deleted manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b69d695-ed59-42c9-bd3a-924d8bd59bde",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === false;",
+									"     tests[\"To check message is correct\"]=body.message===\"Manager ID is invalid and Required.\";",
+									"    tests[\"To check message code\"]=body.message_code===301021;",
+									"    ",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "manager_id",
+								"value": "{{manager_id}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/manager_details?",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"manager_details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login With manager for check Unauthorized access.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === true;",
+									"   ",
+									"    ",
+									"    pm.environment.set(\"Unauthorizedaccessmanager\",body.data.authentication.onehuddletoken);",
+									"   ",
+									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
+									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "locale",
+								"value": "en"
+							},
+							{
+								"key": "user-type",
+								"value": "manager"
+							},
+							{
+								"key": "api-key",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "api-secret",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"shailendra.s+502@codewalla.com\",\"password\":\"pass\"}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.5/auth/login",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.5",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Access Type is A for super admin."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_manager Unauthorized access manager",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b69d695-ed59-42c9-bd3a-924d8bd59bde",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code === 200)",
+									"{",
+									"    tests[\"To check status is successful\"] = body.success === false;",
+									"     tests[\"To check message is correct\"]=body.message===\"Unauthorized access.\";",
+									"    tests[\"To check message code\"]=body.message_code===311000;",
+									"    ",
+									"    ",
+									"    ",
+									"    ",
+									" }"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{Unauthorizedaccessmanager}}"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"manager_ids\":[{{manager_id}}]\r\n}"
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/manager/delete",
+							"host": [
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"manager",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

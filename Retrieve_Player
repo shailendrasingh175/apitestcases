@@ -62,12 +62,9 @@
 							"raw": "{\"email\":\"sha@codewalla.com\",\"password\":\"pass\"}"
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.5/auth/login",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -157,12 +154,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=company_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -283,12 +277,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=department_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -409,12 +400,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_na1&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=group_na1&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -535,12 +523,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=first_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -661,12 +646,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=last_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -787,12 +769,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_na&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -913,12 +892,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=asc1&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=asc1&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1039,12 +1015,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC1&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC1&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1160,12 +1133,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=-1&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=-1&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1281,12 +1251,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=-20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=-20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1402,12 +1369,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=3445453354354&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=3445453354354&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1523,12 +1487,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1647,12 +1608,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1772,12 +1730,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -1891,12 +1846,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2010,12 +1962,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2129,12 +2078,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2250,12 +2196,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=company_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2374,12 +2317,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=department_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2493,12 +2433,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2618,12 +2555,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=group_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2737,12 +2671,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -2856,250 +2787,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
-							],
-							"path": [
-								"api",
-								"rest",
-								"v1.6",
-								"player",
-								"retrieve_player"
-							],
-							"query": [
-								{
-									"key": "sort_by",
-									"value": "last_name"
-								},
-								{
-									"key": "order",
-									"value": "DESC"
-								},
-								{
-									"key": "start_index",
-									"value": "0"
-								},
-								{
-									"key": "limit",
-									"value": "20"
-								},
-								{
-									"key": "company_id",
-									"value": "848"
-								},
-								{
-									"key": "status",
-									"value": "active"
-								}
-							]
-						},
-						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
-					},
-					"response": []
-				},
-				{
-					"name": "To check ASC- Email ID",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
-								"exec": [
-									"var body = JSON.parse(responseBody);",
-									"if(responseCode.code ===200)",
-									"{",
-									"    tests[\"To check status is true\"] = body.success === true;",
-									"   ",
-									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
-									"    ",
-									"    tests[\"To check message code\"]=body.message_code===301001;",
-									"    tests[\"To check total player count\"]=body.data.total_player===19",
-									"    tests[\"To check email ASC first position(First Email ID)\"]=body.data.player_list[0].email===\"shailendra.s+1004@codewalla.com\";",
-									"    tests[\"To check ASC last position(Last Email ID)\"]=body.data.player_list[18].email===\"zm@gmail.com\";",
-									"}"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "company_id",
-								"type": "text",
-								"value": "",
-								"disabled": true
-							},
-							{
-								"key": "locale",
-								"type": "text",
-								"value": "en",
-								"disabled": true
-							},
-							{
-								"key": "user-type",
-								"type": "text",
-								"value": "manager",
-								"disabled": true
-							},
-							{
-								"key": "api-key",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "api-secret",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "session-token",
-								"type": "text",
-								"value": "{{session_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=ASC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
-							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
-							],
-							"path": [
-								"api",
-								"rest",
-								"v1.6",
-								"player",
-								"retrieve_player"
-							],
-							"query": [
-								{
-									"key": "sort_by",
-									"value": "last_name"
-								},
-								{
-									"key": "order",
-									"value": "ASC"
-								},
-								{
-									"key": "start_index",
-									"value": "0"
-								},
-								{
-									"key": "limit",
-									"value": "20"
-								},
-								{
-									"key": "company_id",
-									"value": "848"
-								},
-								{
-									"key": "status",
-									"value": "active"
-								}
-							]
-						},
-						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
-					},
-					"response": []
-				},
-				{
-					"name": "To check DESC- Email ID Copy",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
-								"exec": [
-									"var body = JSON.parse(responseBody);",
-									"if(responseCode.code ===200)",
-									"{",
-									"    tests[\"To check status is true\"] = body.success === true;",
-									"   ",
-									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
-									"    ",
-									"    tests[\"To check message code\"]=body.message_code===301001;",
-									"    tests[\"To check total player count\"]=body.data.total_player===19",
-									"    tests[\"To check DESC for email(first email id position)\"]=body.data.player_list[0].email===\"zm@gmail.com\";",
-									"    tests[\"To check DESC for email(Last email id position)\"]=body.data.player_list[18].email===\"shailendra.s+1004@codewalla.com\";",
-									"}"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "company_id",
-								"type": "text",
-								"value": "",
-								"disabled": true
-							},
-							{
-								"key": "locale",
-								"type": "text",
-								"value": "en",
-								"disabled": true
-							},
-							{
-								"key": "user-type",
-								"type": "text",
-								"value": "manager",
-								"disabled": true
-							},
-							{
-								"key": "api-key",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "api-secret",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "session-token",
-								"type": "text",
-								"value": "{{session_token}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
-							"protocol": "http",
-							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3156,8 +2846,8 @@
 									"    ",
 									"    tests[\"To check message code\"]=body.message_code===301001;",
 									"    tests[\"To check total player count\"]=body.data.total_player===3;",
-									"    tests[\"to check success inactive player first position for status\"]=body.data.player_list[0].state===\"inactive\";",
-									"    tests[\"to check success inactive player last position for status\"]=body.data.player_list[2].state===\"inactive\";",
+									"    tests[\"to check success inactive player first position for status\"]=body.data.player_list[0].status===\"inactive\";",
+									"    tests[\"to check success inactive player last position for status\"]=body.data.player_list[2].status===\"inactive\";",
 									"}"
 								],
 								"type": "text/javascript"
@@ -3213,12 +2903,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3259,7 +2946,7 @@
 					"response": []
 				},
 				{
-					"name": "To check ASC - Inactive Player",
+					"name": "To check success for active player",
 					"event": [
 						{
 							"listen": "test",
@@ -3274,9 +2961,12 @@
 									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
 									"    ",
 									"    tests[\"To check message code\"]=body.message_code===301001;",
-									"    tests[\"To check total player count\"]=body.data.total_player===3;",
-									"    tests[\"To check ASC first position(inactive player)\"]=body.data.player_list[0].state===\"inactive\";",
-									"    tests[\"To check ASC last position(inactive player)\"]=body.data.player_list[2].state===\"inactive\";",
+									"    tests[\"To check total player count\"]=body.data.total_player===19;",
+									"    tests[\"to check success active player first position for status\"]=body.data.player_list[0].player_id===45025;",
+									"     tests[\"to check success active player first position for status\"]=body.data.player_list[0].status===\"active\";",
+									"    tests[\"to check success active player last position for status\"]=body.data.player_list[18].player_id===45011;",
+									"    tests[\"to check success active player last position for status\"]=body.data.player_list[18].status===\"active\";",
+									"    ",
 									"}"
 								],
 								"type": "text/javascript"
@@ -3332,12 +3022,125 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=inactive",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=last_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
+							],
+							"path": [
+								"api",
+								"rest",
+								"v1.6",
+								"player",
+								"retrieve_player"
+							],
+							"query": [
+								{
+									"key": "sort_by",
+									"value": "last_name"
+								},
+								{
+									"key": "order",
+									"value": "DESC"
+								},
+								{
+									"key": "start_index",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "company_id",
+									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
+								}
+							]
+						},
+						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
+					},
+					"response": []
+				},
+				{
+					"name": "To check ASC - Inactive Player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
+								"exec": [
+									"var body = JSON.parse(responseBody);",
+									"if(responseCode.code ===200)",
+									"{",
+									"    tests[\"To check status is true\"] = body.success === true;",
+									"   ",
+									"    tests[\"To check message is correct\"]=body.message===\"Player list fetch successfully.\";",
+									"    ",
+									"    tests[\"To check message code\"]=body.message_code===301001;",
+									"    tests[\"To check total player count\"]=body.data.total_player===3;",
+									"    tests[\"To check ASC first position(inactive player)\"]=body.data.player_list[0].status===\"inactive\";",
+									"    tests[\"To check ASC last position(inactive player)\"]=body.data.player_list[2].status===\"inactive\";",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "company_id",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "locale",
+								"type": "text",
+								"value": "en",
+								"disabled": true
+							},
+							{
+								"key": "user-type",
+								"type": "text",
+								"value": "manager",
+								"disabled": true
+							},
+							{
+								"key": "api-key",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "api-secret",
+								"type": "text",
+								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
+								"disabled": true
+							},
+							{
+								"key": "session-token",
+								"type": "text",
+								"value": "{{session_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=ASC&start_index=0&limit=20&company_id=848&status=inactive",
+							"host": [
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3394,8 +3197,8 @@
 									"    ",
 									"    tests[\"To check message code\"]=body.message_code===301001;",
 									"    tests[\"To check total player count\"]=body.data.total_player===3;",
-									"    tests[\"To check DESC first position(Inactive player)\"]=body.data.player_list[0].state===\"inactive\";",
-									"    tests[\"To check DESC last position(Inactive player)\"]=body.data.player_list[2].state===\"inactive\";",
+									"    tests[\"To check DESC first position(Inactive player)\"]=body.data.player_list[0].status===\"inactive\";",
+									"    tests[\"To check DESC last position(Inactive player)\"]=body.data.player_list[2].status===\"inactive\";",
 									"}"
 								],
 								"type": "text/javascript"
@@ -3451,12 +3254,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=first_name&order=DESC&start_index=0&limit=20&company_id=848&status=inactive",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3497,7 +3297,7 @@
 					"response": []
 				},
 				{
-					"name": "Login with valid email and valid pw- Manager",
+					"name": "Login with valid email and valid pw- Manager(Unauthorized )",
 					"event": [
 						{
 							"listen": "test",
@@ -3550,12 +3350,9 @@
 							"raw": "{\"email\":\"manager@1huddle.co\",\"password\":\"pass\"}"
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.5/auth/login",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3582,10 +3379,10 @@
 									"{",
 									"    tests[\"To check status is false\"] = body.success === false;",
 									"   ",
-									"    tests[\"To check message is correct\"]=body.message===\"You don't have permission to other companies players.\";",
+									"    tests[\"To check message is correct\"]=body.message===\"Unauthorized access.\";",
 									"    ",
-									"    tests[\"To check message code\"]=body.message_code===301002;",
-									"    tests[\"To check data\"]=body.data===null;",
+									"    tests[\"To check message code\"]=body.message_code===311000;",
+									"    tests[\"To check data\"]=body.data===\"Unauthorized access.\";",
 									"    ",
 									"   ",
 									"    ",
@@ -3645,12 +3442,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3687,7 +3481,7 @@
 					"response": []
 				},
 				{
-					"name": "Login with valid email and valid pw- Middle manager (Unauthorized )",
+					"name": "Login with valid email and valid pw- Manager",
 					"event": [
 						{
 							"listen": "test",
@@ -3737,15 +3531,12 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"email\":\"shailendra.s+101@codewalla.com\",\"password\":\"pass\"}"
+							"raw": "{\"email\":\"shailendra.s+51@codewalla.com\",\"password\":\"pass\"}"
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.5/auth/login",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -3760,197 +3551,7 @@
 					"response": []
 				},
 				{
-					"name": "to check error Unauthorized access using middle manager",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "ea192db4-0c5e-4f48-9f5a-19c4c9e60e5b",
-								"exec": [
-									"var body = JSON.parse(responseBody);",
-									"if(responseCode.code ===200)",
-									"{",
-									"    tests[\"To check status is false\"] = body.success === false;",
-									"   ",
-									"    tests[\"To check message is correct\"]=body.message===\"You don't have permission to other companies players.\";",
-									"    ",
-									"    tests[\"To check message code\"]=body.message_code===301002;",
-									"    tests[\"To check data\"]=body.data===null;",
-									"    ",
-									"   ",
-									"    ",
-									"   ",
-									"}"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "company_id",
-								"type": "text",
-								"value": "",
-								"disabled": true
-							},
-							{
-								"key": "locale",
-								"type": "text",
-								"value": "en",
-								"disabled": true
-							},
-							{
-								"key": "user-type",
-								"type": "text",
-								"value": "manager",
-								"disabled": true
-							},
-							{
-								"key": "api-key",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "api-secret",
-								"type": "text",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID",
-								"disabled": true
-							},
-							{
-								"key": "session-token",
-								"type": "text",
-								"value": "{{session_token_Middlemanager}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
-							"protocol": "http",
-							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
-							],
-							"path": [
-								"api",
-								"rest",
-								"v1.6",
-								"player",
-								"retrieve_player"
-							],
-							"query": [
-								{
-									"key": "sort_by",
-									"value": "location_name"
-								},
-								{
-									"key": "order",
-									"value": "DESC"
-								},
-								{
-									"key": "start_index",
-									"value": "0"
-								},
-								{
-									"key": "limit",
-									"value": "20"
-								},
-								{
-									"key": "company_id",
-									"value": "848"
-								}
-							]
-						},
-						"description": "300003:Company added successfully.\n\nIf we apply country id then list of companies which are at country will appear. \n\nIf we apply state id then list of companies which are at state will appear.\n\nWe we profile only Key then bydefault value will consider as zero. Like if we select key as country id then then backend will consider value as 0. and search company at country id 0."
-					},
-					"response": []
-				},
-				{
-					"name": "Login with valid email and valid pw- Middle manager",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "97ccd50a-a830-4145-9663-51a5b19eee19",
-								"exec": [
-									"var body = JSON.parse(responseBody);",
-									"if(responseCode.code === 200)",
-									"{",
-									"    tests[\"To check status is successful\"] = body.success === true;",
-									"    //tests[\"To check access type is A\"]=body.data.manager.access_type===\"A\";",
-									"    ",
-									"    pm.environment.set(\"session_token_Middlemanager\",body.data.authentication.onehuddletoken);",
-									"   ",
-									"    //tests[\"To check message is correct\"]=body.message=== \"Fields Validation Failed.\";",
-									" //   tests[\"To check data is correct or not\"]=body.data.email[0]=== \"The email field is required.\";",
-									"    ",
-									" }"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "locale",
-								"value": "en"
-							},
-							{
-								"key": "user-type",
-								"value": "manager"
-							},
-							{
-								"key": "api-key",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
-							},
-							{
-								"key": "api-secret",
-								"value": "3ca09dc649ac5ec61e1a6c0fc17d5819UNia1nirLrBbcVxwSg52wjzrt6yjeHESIGAPwPID"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\"email\":\"shailendra.s+1404@codewalla.com\",\"password\":\"pass\"}"
-						},
-						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.5/auth/login",
-							"protocol": "http",
-							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
-							],
-							"path": [
-								"api",
-								"rest",
-								"v1.5",
-								"auth",
-								"login"
-							]
-						},
-						"description": "Access Type is A for super admin."
-					},
-					"response": []
-				},
-				{
-					"name": "to check success message login middle manager",
+					"name": "to check success message login with valid manager",
 					"event": [
 						{
 							"listen": "test",
@@ -4022,12 +3623,9 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://newdev-api.1huddle.co/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848",
-							"protocol": "http",
+							"raw": "{{apibasepath}}/api/rest/v1.6/player/retrieve_player?sort_by=location_name&order=DESC&start_index=0&limit=20&company_id=848&status=active",
 							"host": [
-								"newdev-api",
-								"1huddle",
-								"co"
+								"{{apibasepath}}"
 							],
 							"path": [
 								"api",
@@ -4056,6 +3654,10 @@
 								{
 									"key": "company_id",
 									"value": "848"
+								},
+								{
+									"key": "status",
+									"value": "active"
 								}
 							]
 						},
